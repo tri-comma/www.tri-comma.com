@@ -1,0 +1,95 @@
+.section {
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--gray-800);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.group input,
+.group textarea,
+.group select {
+    padding: 12px;
+    border: 1px solid var(--gray-200);
+    background-color: var(--background);
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+.group input:focus,
+.group textarea:focus,
+.group select:focus {
+    outline: none;
+    border-color: var(--foreground);
+}
+
+.selectWrapper {
+    position: relative;
+}
+
+.button {
+    margin-top: 1rem;
+    padding: 15px;
+    background-color: var(--foreground);
+    color: var(--background);
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.successMessage {
+    color: green;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.errorMessage {
+    color: red;
+    text-align: center;
+    margin-top: 1rem;
+}

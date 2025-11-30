@@ -1,0 +1,123 @@
+.section {
+    background-color: var(--gray-100) !important;
+    padding: 100px 0;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.profileImage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.subHeading {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.text {
+    margin-bottom: 2rem;
+    color: var(--gray-800);
+}
+
+.qualifications h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--foreground);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.qualifications ul {
+    list-style: none;
+}
+
+.qualifications li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.achievements {
+    margin-top: 3rem;
+}
+
+.achievements h4 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--foreground);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.achievementItem {
+    margin-bottom: 2rem;
+}
+
+.achievementItem:last-child {
+    margin-bottom: 0;
+}
+
+.achievementItem h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.achievementDetail {
+    font-size: 0.9rem;
+    color: var(--gray-800);
+    padding-left: 1rem;
+    border-left: 2px solid var(--gray-200);
+}
+
+.achievementDetail p {
+    margin-bottom: 0.3rem;
+}
+
+.label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+    opacity: 0.7;
+}
+
+.highlight {
+    font-weight: 700;
+    color: var(--foreground);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.2);
+}
+
+.role {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
