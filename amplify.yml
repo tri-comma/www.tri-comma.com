@@ -4,11 +4,6 @@ frontend:
     preBuild:
       commands:
         - npm ci
-        - yum install -y amazon-linux-extras
-        - amazon-linux-extras install epel -y
-        - yum install -y git-lfs
-        - git lfs install
-        - git lfs pull
     build:
       commands:
         - npm run build
