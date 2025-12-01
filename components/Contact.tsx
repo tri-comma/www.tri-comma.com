@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
@@ -12,6 +13,7 @@ export default function Contact() {
         message: "",
     });
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,10 +24,20 @@ export default function Contact() {
         setStatus("submitting");
 
         try {
+            // Generate reCAPTCHA token (optional for local development)
+            let recaptchaToken = null;
+            if (executeRecaptcha && typeof executeRecaptcha === 'function') {
+                try {
+                    recaptchaToken = await executeRecaptcha("contact_submit");
+                } catch (recaptchaError) {
+                    console.warn("reCAPTCHA failed, continuing without it:", recaptchaError);
+                }
+            }
+
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, recaptchaToken }),
             });
 
             if (res.ok) {
@@ -35,6 +47,7 @@ export default function Contact() {
                 setStatus("error");
             }
         } catch (error) {
+            console.error("Error in handleSubmit:", error);
             setStatus("error");
         }
     };

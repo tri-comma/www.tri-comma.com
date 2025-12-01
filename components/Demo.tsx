@@ -67,8 +67,12 @@ export default function Demo() {
         try {
             // Generate reCAPTCHA token (optional for local development)
             let recaptchaToken = null;
-            if (executeRecaptcha) {
-                recaptchaToken = await executeRecaptcha("demo_analyze");
+            if (executeRecaptcha && typeof executeRecaptcha === 'function') {
+                try {
+                    recaptchaToken = await executeRecaptcha("demo_analyze");
+                } catch (recaptchaError) {
+                    console.warn("reCAPTCHA failed, continuing without it:", recaptchaError);
+                }
             }
 
             const response = await fetch("/api/demo", {

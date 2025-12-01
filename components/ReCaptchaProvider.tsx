@@ -9,13 +9,15 @@ export default function ReCaptchaProvider({
 }) {
     const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
 
-    // Skip reCAPTCHA if no site key is provided (for local development)
-    if (!recaptchaSiteKey) {
-        return <>{children}</>;
-    }
-
     return (
-        <GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey}>
+        <GoogleReCaptchaProvider
+            reCaptchaKey={recaptchaSiteKey}
+            scriptProps={{
+                async: true,
+                defer: true,
+                appendTo: "body",
+            }}
+        >
             {children}
         </GoogleReCaptchaProvider>
     );

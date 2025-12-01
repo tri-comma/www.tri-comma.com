@@ -3,7 +3,23 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, email, subject, theme, message } = body;
+        const { name, email, subject, theme, message, recaptchaToken } = body;
+
+        // Verify reCAPTCHA token
+        if (recaptchaToken) {
+            const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+            const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
+
+            const verifyResponse = await fetch(verifyUrl, { method: "POST" });
+            const verifyData = await verifyResponse.json();
+
+            if (!verifyData.success || verifyData.score < 0.5) {
+                return NextResponse.json(
+                    { error: "reCAPTCHA verification failed" },
+                    { status: 403 }
+                );
+            }
+        }
 
         const webhookUrl = process.env.SLACK_WEBHOOK_URL;
 
