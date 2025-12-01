@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import styles from "./Demo.module.css";
 import FadeIn from "./FadeIn";
 
@@ -41,6 +42,7 @@ export default function Demo() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [remainingUses, setRemainingUses] = useState(5);
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const handleLoadSample = () => {
         setInput(SAMPLE_TEXT.trim());
@@ -48,9 +50,13 @@ export default function Demo() {
     };
 
     const handleAnalyze = async () => {
-        if (!input.trim()) return;
+        if (!input.trim()) {
+            alert("会議メモを入力してください");
+            return;
+        }
+
         if (remainingUses <= 0) {
-            setError("本日の利用回数制限に達しました。");
+            alert("本日の利用回数を超えました");
             return;
         }
 
@@ -59,24 +65,30 @@ export default function Demo() {
         setResult(null);
 
         try {
+            // Generate reCAPTCHA token (optional for local development)
+            let recaptchaToken = null;
+            if (executeRecaptcha) {
+                recaptchaToken = await executeRecaptcha("demo_analyze");
+            }
+
             const response = await fetch("/api/demo", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ text: input }),
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    text: input,
+                    recaptchaToken
+                }),
             });
 
             if (!response.ok) {
-                throw new Error("分析に失敗しました。");
+                throw new Error("解析に失敗しました");
             }
 
             const data = await response.json();
             setResult(data);
-            setRemainingUses((prev) => prev - 1);
-        } catch (err) {
+            setRemainingUses(prev => prev - 1);
+        } catch (error) {
             setError("エラーが発生しました。もう一度お試しください。");
-            console.error(err);
         } finally {
             setLoading(false);
         }

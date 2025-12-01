@@ -1,17 +1,39 @@
 .footer {
     background-color: var(--foreground);
     color: var(--background);
-    padding: 40px 0;
+    padding: 2rem 0;
     text-align: center;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 5%;
+}
+
+.container p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
 }
 
 .copy {
     font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.recaptcha {
+    font-size: 0.75rem !important;
+    opacity: 0.7;
+    margin-top: 1rem !important;
+}
+
+.recaptcha a {
+    color: var(--background);
+    text-decoration: underline;
+}
+
+/* Hide reCAPTCHA badge */
+.grecaptcha-badge {
+    visibility: hidden;
     opacity: 0.7;
 }

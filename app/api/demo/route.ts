@@ -3,7 +3,24 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
     try {
-        const { text } = await request.json();
+        const { text, recaptchaToken } = await request.json();
+
+        // Verify reCAPTCHA token
+        if (recaptchaToken) {
+            const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+            const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
+
+            const verifyResponse = await fetch(verifyUrl, { method: "POST" });
+            const verifyData = await verifyResponse.json();
+
+            if (!verifyData.success || verifyData.score < 0.5) {
+                return NextResponse.json(
+                    { error: "reCAPTCHA verification failed" },
+                    { status: 403 }
+                );
+            }
+        }
+
         const apiKey = process.env.OPENAI_API_KEY;
 
         // For demo purposes, use mock mode (set to true to enable real API)
