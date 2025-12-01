@@ -7,11 +7,7 @@ export async function POST(request: Request) {
 
         const webhookUrl = process.env.SLACK_WEBHOOK_URL;
 
-        // Debug: Check if env var is loaded
-        console.log('SLACK_WEBHOOK_URL exists:', !!webhookUrl);
-
         if (!webhookUrl) {
-            console.error('SLACK_WEBHOOK_URL is not set');
             return NextResponse.json(
                 { error: "Server configuration error" },
                 { status: 500 }

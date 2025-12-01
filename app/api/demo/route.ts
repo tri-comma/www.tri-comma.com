@@ -6,10 +6,6 @@ export async function POST(request: Request) {
         const { text } = await request.json();
         const apiKey = process.env.OPENAI_API_KEY;
 
-        // Debug: Check if env vars are loaded
-        console.log('OPENAI_API_KEY exists:', !!apiKey);
-        console.log('SLACK_WEBHOOK_URL exists:', !!process.env.SLACK_WEBHOOK_URL);
-
         // For demo purposes, use mock mode (set to true to enable real API)
         const useMockMode = false;
 
