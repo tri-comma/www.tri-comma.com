@@ -12,7 +12,7 @@ export default function About() {
                 <div className={styles.grid}>
                     <FadeIn delay={200} className={styles.profile}>
                         <img
-                            src="/About.png"
+                            src="/About.webp"
                             alt="Profile"
                             className={styles.profileImage}
                         />

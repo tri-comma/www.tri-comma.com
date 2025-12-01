@@ -17,7 +17,7 @@ export default function Services() {
             title: "Technical Advisory",
             subtitle: "技術顧問 / PM支援",
             description: "大手SIerでのプロジェクトマネジメント経験を活かし、貴社の「外部CTO」として技術的な意思決定をサポートします。ベンダーコントロールから採用支援、開発プロセスの整備まで、経営と現場の橋渡し役としてプロジェクトを成功に導きます。",
-            image: "/TechnicalAdvisory.png",
+            image: "/TechnicalAdvisory.webp",
             recommendedFor: [
                 "社内にCTO/IT責任者がいない",
                 "ベンダーの見積もりが妥当か判断できない",
@@ -33,7 +33,7 @@ export default function Services() {
             title: "Web Development",
             subtitle: "Webサイト制作",
             description: "コーポレートサイトからLP、オウンドメディアまで。Next.jsなどのモダンな技術選定により、SEOに強く、更新しやすいWebサイトを構築します。",
-            image: "/WebDevelopment.png",
+            image: "/WebDevelopment.webp",
             pricing: [
                 "LP制作：10万円〜",
                 "コーポレートサイト(新規)：40〜80万円",
@@ -45,7 +45,7 @@ export default function Services() {
             title: "App Development",
             subtitle: "スマートフォンアプリ開発",
             description: "iOS / Android対応のネイティブアプリ、またはクロスプラットフォーム開発。企画段階からストア公開、その後の運用までサポートします。",
-            image: "/AppDevelopment.png",
+            image: "/AppDevelopment.webp",
             pricing: [
                 "PoC（概念実証）開発：30万円〜",
                 "　└ アイデアの実現可能性を検証する試作版",
@@ -57,7 +57,7 @@ export default function Services() {
             title: "System Development",
             subtitle: "業務システム開発",
             description: "在庫管理、顧客管理、予約システムなど。業務フローに合わせたオーダーメイドのシステムを開発し、現場のDXを推進します。",
-            image: "/SystemDevelopment.png",
+            image: "/SystemDevelopment.webp",
             recommendedFor: [
                 "業務がExcelや紙の管理で限界を迎えている",
                 "既存システムが古く、使い勝手が悪い",
@@ -73,7 +73,7 @@ export default function Services() {
             title: "DX & AI Solutions",
             subtitle: "業務効率化 / AI活用",
             description: "GASやSlack連携による身近な業務自動化から、最新のAI技術を活用したソリューション提案まで。研究開発に基づいた先進的なアプローチで課題を解決します。",
-            image: "/DX_AISolutions.png",
+            image: "/DX_AISolutions.webp",
             solutionExamples: [
                 "ChatGPT × 社内データ活用",
                 "　└ 社内マニュアルや過去のナレッジを回答する専用Botの構築",
