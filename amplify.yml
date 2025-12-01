@@ -4,6 +4,7 @@ frontend:
     preBuild:
       commands:
         - npm ci
+        - env | grep -E 'SLACK_WEBHOOK_URL|OPENAI_API_KEY|NEXT_PUBLIC_GA_MEASUREMENT_ID'
     build:
       commands:
         - npm run build
@@ -14,3 +15,8 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+env:
+  variables:
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: $NEXT_PUBLIC_GA_MEASUREMENT_ID
+    OPENAI_API_KEY: $OPENAI_API_KEY
+    SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
